@@ -13,8 +13,10 @@ public class ToDoListTest {
 
     @Before
     public void setUp() {
-        // Initialize a new ToDoList instance before each test
-        toDoList = new ToDoList();
+        // Use the singleton instance to initialize ToDoList before each test
+        toDoList = ToDoList.getInstance();
+        // Clear all items in the list to ensure a clean state for each test
+        toDoList.clearItems();
     }
 
     @Test
@@ -23,29 +25,28 @@ public class ToDoListTest {
         ToDoItem task = new ToDoItem("Complete project");
 
         // Act
-        toDoList.addItem(task);
+        toDoList.addItem(task);  // This will save the task in the database
         List<ToDoItem> items = toDoList.getItems();
 
         // Assert
-        assertNotNull("The list should not be null", items);  // Ensure the list is not null
-        assertEquals("The list should contain 1 item", 1, items.size());  // Ensure the list has one item
-        assertTrue("The task should be in the list", items.contains(task));  // Ensure the task was added
+        assertNotNull("The list should not be null", items);
+        assertEquals("The list should contain 1 item", 1, items.size());
+        assertEquals("The task description should match", "Complete project", items.get(0).getDescription());
     }
 
     @Test
-    public void testRemoveToDoItem() {
+    public void testRemoveToDoItemById() {
         // Arrange
         ToDoItem task = new ToDoItem("Go to the gym");
         toDoList.addItem(task);
+        int taskId = task.getId();  // The ID is assigned after saving the task
 
         // Act
-        boolean removed = toDoList.removeItem(task);
+        toDoList.removeItem(taskId);  // Remove by ID
         List<ToDoItem> items = toDoList.getItems();
 
         // Assert
-        assertTrue("The task should be removed successfully", removed);  // Ensure the item was removed successfully
-        assertEquals("The list should be empty after removal", 0, items.size());  // Ensure the list is now empty
-        assertFalse("The task should no longer be in the list", items.contains(task));  // Ensure the task is not in the list
+        assertTrue("The task should be removed, so the list should be empty", items.isEmpty());
     }
 
     @Test
@@ -55,11 +56,11 @@ public class ToDoListTest {
         toDoList.addItem(new ToDoItem("Task 2"));
 
         // Act
-        toDoList.clearItems();
+        toDoList.clearItems();  // Clears all items from the database
         List<ToDoItem> items = toDoList.getItems();
 
         // Assert
-        assertNotNull("The list should not be null after clearing", items);  // Ensure the list is not null
-        assertEquals("The list should be empty after clearing", 0, items.size());  // Ensure the list is cleared
+        assertNotNull("The list should not be null", items);
+        assertEquals("The list should be empty after clearing", 0, items.size());
     }
 }

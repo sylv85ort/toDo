@@ -1,6 +1,6 @@
 package org.example;
 
-
+//I love birds
 import jakarta.persistence.*;
 
 @Entity

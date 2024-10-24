@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y maven wget
 WORKDIR /app
 
 # Copy the project files into the container (assuming all source code is in the current directory)
-COPY . .
+ADD . .
 
 # Build the application using Maven
 RUN mvn clean package -DskipTests

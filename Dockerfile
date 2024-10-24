@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . /app
 
 # Build the application using Maven (if you use Maven)
-RUN ./mvnw package -DskipTests
+RUN mvn package -DskipTests
 
 # Expose port 8080 for your application (adjust as necessary)
 EXPOSE 8080

@@ -22,4 +22,4 @@ COPY /target/toDo-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/
 EXPOSE 8085
 
 # Start Tomcat
-CMD ["/usr/local/tomcat/bin/catalina.sh", "run"
+CMD ["/usr/local/tomcat/bin/catalina.sh", "run"]

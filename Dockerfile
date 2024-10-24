@@ -15,7 +15,7 @@ RUN wget https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.109/bin/apache-tom
 # Build the application using Maven (if you use Maven)
 RUN mvn package -DskipTests
 
-COPY /app/target/toDo-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/
+COPY /target/toDo-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/
 
 # Expose port 8080 for your application (adjust as necessary)
 

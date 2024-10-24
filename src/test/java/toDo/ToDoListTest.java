@@ -46,7 +46,7 @@ public class ToDoListTest {
         List<ToDoItem> items = toDoList.getItems();
 
         // Assert
-        assertTrue("The task should be removed, so the list should be empty", items.isEmpty());
+        assertTrue("The task should be removed, so the list should be empty", items.isEmpty()); 
     }
 
     @Test

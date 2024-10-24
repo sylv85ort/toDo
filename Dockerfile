@@ -19,7 +19,7 @@ RUN wget https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.109/bin/apache-tom
     && mv apache-tomcat-7.0.109 /usr/local/tomcat
 
 # Copy the generated WAR file to Tomcat's webapps directory
-COPY /app/target/toDo-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/
+COPY target/toDo-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/
 
 # Expose port 8085 for the application
 EXPOSE 8085

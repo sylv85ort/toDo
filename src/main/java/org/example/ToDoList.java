@@ -6,6 +6,9 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.List;
 
+//Hi
+
+
 public class ToDoList {
     private static ToDoList instance;
     private SessionFactory factory;

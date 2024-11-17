@@ -6,7 +6,7 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.List;
 
-//Hi how are you?
+//Hi
 
 
 public class ToDoList {
